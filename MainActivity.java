@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         randomGenerator = new Random();
         randomInt = randomGenerator.nextInt(10000);
 
+
         showDialog();
         mRunnable = new Runnable() {
             @Override
