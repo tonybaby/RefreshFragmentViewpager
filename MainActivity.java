@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.ViewGroup;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -27,10 +29,16 @@ public class MainActivity extends AppCompatActivity {
     Runnable mRunnable ;
     private int randomInt = 0;
     Random randomGenerator ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
 
         mProgressDialog = new ProgressDialog(MainActivity.this);
         mProgressDialog.setMessage("Updating...");
@@ -41,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         int size =10;
         for (int i = 0; i < 3; i++) {
 
-            mArrString.add(String.valueOf("Position ="+i));
+            mArrString.add(String.valueOf(i));
         }
         mHandler = new Handler();
 
@@ -50,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mAdapter);
         mViewPagerTab = (SmartTabLayout) findViewById(R.id.viewpagertab);
         mViewPagerTab.setViewPager(mViewPager);
+
+
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -90,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 final Demo_Fragment demo_Fragment = getFragment(mViewPager.getCurrentItem());
                 final String str = mArrString.get(mViewPager.getCurrentItem());
                 randomInt = randomGenerator.nextInt(10000);
-                demo_Fragment.updateView(String.valueOf(0));
+//                demo_Fragment.updateView(String.valueOf(0));
                 hideDialog();
             }
         };
